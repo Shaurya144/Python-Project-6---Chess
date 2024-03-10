@@ -310,7 +310,7 @@ def check_valid_moves():
     return valid_options
 
 
-# draw valid moves on screen
+# drawing valid moves
 def draw_valid(moves):
     if turn_step < 2:
         color = 'red'
@@ -320,7 +320,7 @@ def draw_valid(moves):
         pygame.draw.circle(screen, color, (moves[i][0] * 500 + 25, moves[i][1] * 50 + 25), 5)
 
 
-# draw captured pieces on side of screen
+# drawing the captured pieces on side
 def draw_captured():
     for i in range(len(captured_pieces_white)):
         captured_piece = captured_pieces_white[i]
@@ -332,7 +332,7 @@ def draw_captured():
         screen.blit(small_white_images[index], (450, 5 + 50 * i))
 
 
-# draw a flashing square around king if in check
+# drawing a flashing square around king if in check
 def draw_check():
     if turn_step < 2:
         if 'king' in white_pieces:

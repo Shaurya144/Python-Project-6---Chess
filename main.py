@@ -43,7 +43,7 @@ black_knight = pygame.image.load('assets/images/black knight.png')
 black_knight = pygame.transform.scale(black_knight, (40, 40))
 black_knight_small = pygame.transform.scale(black_knight, (22, 22))
 black_pawn = pygame.image.load('assets/images/black pawn.png')
-black_pawn = pygame.transform.scale(black_pawn, (65, 65))
+black_pawn = pygame.transform.scale(black_pawn, (32, 32))
 black_pawn_small = pygame.transform.scale(black_pawn, (22, 22))
 white_queen = pygame.image.load('assets/images/white queen.png')
 white_queen = pygame.transform.scale(white_queen, (40, 40))
@@ -100,10 +100,21 @@ def draw_Pieces():
             screen.blit(white_pawn, (white_location[i][0] * 50 + 11, white_location[i][1] * 50 + 15))
         else:
             screen.blit(white_images[index], (white_location[i][0] * 50 + 6, white_location[i][1] * 50 + 6))
-        if turn_step < 2:
+
+        if turn_step < 2: # highlight slected piece
             if selection == i:
-                pygame.draw.rect(screen, 'red', [white_location[i][0] * 100 + 1, white_location[i][1] * 100 + 1,
-                                                 100, 100], 2)
+                pygame.draw.rect(screen, 'red', [white_location[i][0] * 100 + 1, white_location[i][1] * 100 + 1, 100, 100], 2)
+
+    for i in range(len(black_pieces)):
+        index = piece_list.index(black_pieces[i])
+        if black_pieces[i] == "pawn":
+            screen.blit(black_pawn, (black_locations[i][0] * 50 + 11, black_locations[i][1] * 50 + 15))
+        else:
+            screen.blit(black_images[index], (black_locations[i][0] * 50 + 6, black_locations[i][1] * 50 + 6))
+
+        if turn_step < 2: # highlight slected pieces
+            if selection == i:
+                pygame.draw.rect(screen, 'blue', [black_locations[i][0] * 100 + 1, black_locations[i][1] * 100 + 1, 100, 100], 2)
 
 # Game While Loop
 run = True
